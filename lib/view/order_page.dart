@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controller/bottom_navigation_controller.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({Key? key}) : super(key: key);
@@ -58,12 +61,14 @@ class _OrderPageState extends State<OrderPage> {
           ),
           body: TabBarView(
             children: [
+              // all
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: GridView.builder(
                     itemCount: data.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemBuilder: (context, index) {
@@ -76,87 +81,113 @@ class _OrderPageState extends State<OrderPage> {
                   ),
                 ),
               ),
-              Center(
+              // food
+              SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: GridView.builder(
-                    itemCount: data.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Card(
-                        color: data[index]["color"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: GridView.builder(
-                    itemCount: data.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Card(
-                        color: data[index]["color"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: GridView.builder(
-                    itemCount: data.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Card(
-                        color: data[index]["color"],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     SizedBox(
-              //       width: 150,
-              //       height: 50,
-              //       child: ElevatedButton(
-              //         child: Text('Cart'),
-              //         onPressed: () {},
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 150,
-              //       height: 50,
-              //       child: ElevatedButton(
-              //         child: Text('Cart'),
-              //         onPressed: () {},
-              //       ),
-              //     ),
-              //   ],
-              // ),
-            ],
-          )
-          // body: Center(
-          //] child:
+                  child: Column(
+                    children: [
+                      // grid view
+                      GridView.builder(
+                        itemCount: data.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                        ),
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return Card(
+                            color: data[index]["color"],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          );
+                        },
+                      ),
 
-          ),
+                      // elevated button
+                      ElevatedButton(
+                        onPressed: () {
+                          // do something
+                        },
+                        child: const Text("This is a button"),
+                      ),
+                      // dropdown
+                      GetBuilder<BottomNavigationController>(
+                        builder: (controller) {
+                          return DropdownButton(
+                            value: controller.dropdownValue.value,
+                            items: const [
+                              DropdownMenuItem<String>(
+                                value: 'one',
+                                child: Text("One"),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: 'two',
+                                child: Text("Two"),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: 'three',
+                                child: Text("Three"),
+                              )
+                            ],
+                            onChanged: (value) {
+                              // set value here
+                              controller.dropdownValue.value = value!;
+                              controller.update();
+                            },
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              // snack
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: GridView.builder(
+                    itemCount: data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        color: data[index]["color"],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              // water
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: GridView.builder(
+                    itemCount: data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        color: data[index]["color"],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
