@@ -10,7 +10,7 @@ class OrderstatusPage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: size.height,
-        decoration: BoxDecoration(color: Colors.deepPurple),
+        decoration: const BoxDecoration(color: Colors.deepPurple),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

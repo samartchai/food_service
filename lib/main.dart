@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_service/view/navigation_bar_page.dart';
-import 'package:food_service/view/product_page.dart';
 
 void main() {
   runApp(const MyApp());

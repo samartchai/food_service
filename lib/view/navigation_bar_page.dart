@@ -12,16 +12,16 @@ class NavigationPage extends StatelessWidget {
       Get.put(BottomNavigationController());
   NavigationPage({Key? key}) : super(key: key);
 
-  Color darkblue = Color(0xff002748);
-  Color darkGreen = Color(0xff007333);
-  Color darkPink = Color(0xffFF35EE);
+  Color darkblue = const Color(0xff002748);
+  Color darkGreen = const Color(0xff007333);
+  Color darkPink = const Color(0xffFF35EE);
 
   final screens = [
-    ProductPage(),
-    OrderPage(),
-    OrderstatusPage(),
-    MainkitchenPage(),
-    AnalyzePage(),
+    const ProductPage(),
+    const OrderPage(),
+    const OrderstatusPage(),
+    const MainkitchenPage(),
+    const AnalyzePage(),
   ];
 
   @override
@@ -46,27 +46,27 @@ class NavigationPage extends StatelessWidget {
             currentIndex: bottomNavigationController.selectedIndex.value,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.fastfood_outlined),
+                icon: const Icon(Icons.fastfood_outlined),
                 label: "Product",
                 backgroundColor: darkblue,
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 icon: Icon(Icons.food_bank_outlined),
                 label: "Order",
                 backgroundColor: Colors.green,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.table_bar_outlined),
+                icon: const Icon(Icons.table_bar_outlined),
                 label: "OrderStatus",
                 backgroundColor: darkGreen,
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 icon: Icon(Icons.kitchen_outlined),
                 label: "Mainkitchen",
                 backgroundColor: Colors.red,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.analytics_outlined),
+                icon: const Icon(Icons.analytics_outlined),
                 label: "Analyze",
                 backgroundColor: Colors.brown[800],
               ),
